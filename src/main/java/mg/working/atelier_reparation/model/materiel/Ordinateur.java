@@ -30,4 +30,8 @@ public class Ordinateur {
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("ORD" , "s_ordinateur");
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
