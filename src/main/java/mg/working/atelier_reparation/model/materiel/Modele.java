@@ -1,32 +1,29 @@
-package mg.working.atelier_reparation.model.util;
+package mg.working.atelier_reparation.model.materiel;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.atelier_reparation.services.IdGenerator;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "specialite")
-public class Specialite {
+@Table(name = "modele")
+public class Modele {
     @Id
     String id;
 
     @Column(nullable = false)
     String libelle;
 
+    @ManyToOne @JoinColumn(name = "id_marque" , referencedColumnName = "id" ,nullable = false)
+    Marque marque;
 
     public void setId(IdGenerator idGenerator) {
-        this.id = idGenerator.generateId("SPE","s_specialite");
+        this.id = idGenerator.generateId("MDL" , "s_modele");
     }
-
-
 }
