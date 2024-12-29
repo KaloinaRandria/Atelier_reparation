@@ -20,4 +20,8 @@ public class ClientService {
         List<Client> valiny = this.clientRepository.findAll();
         return valiny;
     }
+    public Client getClientById(String id){
+        return this.clientRepository.getReferenceById(id);
+    }
+
 }

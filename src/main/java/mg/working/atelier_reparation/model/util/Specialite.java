@@ -1,4 +1,4 @@
-package mg.working.atelier_reparation.model;
+package mg.working.atelier_reparation.model.util;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,25 +10,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.atelier_reparation.services.IdGenerator;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "specialite")
+public class Specialite {
     @Id
     String id;
-    
-    @Column(nullable = false)
-    String nom;
-    String prenom;
 
-    @Column(unique = true , nullable = false)
-    String mail;
+    @Column(nullable = false)
+    String libelle;
+
 
     public void setId(IdGenerator idGenerator) {
-        this.id = idGenerator.generateId("CLI" , "s_client");
+        this.id = idGenerator.generateId("SPE","s_specialite");
     }
+
 
 }
