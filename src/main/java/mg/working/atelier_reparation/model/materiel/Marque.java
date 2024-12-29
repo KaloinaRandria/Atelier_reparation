@@ -26,4 +26,8 @@ public class Marque {
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("MAR" , "s_marque");
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
