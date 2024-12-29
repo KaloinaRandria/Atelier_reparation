@@ -48,3 +48,17 @@ CREATE TABLE technicien(
    UNIQUE(mail),
    FOREIGN KEY(id_specialite) REFERENCES specialite(id_specialite)
 );
+
+CREATE TABLE reparation(
+   id SERIAL,
+   desc_probleme VARCHAR(255)  NOT NULL,
+   date_depot DATE NOT NULL,
+   date_retrait DATE,
+   cout_reparation NUMERIC(15,2)  ,
+   status INTEGER NOT NULL,
+   id_ordinateur INTEGER NOT NULL,
+   id_technicien INTEGER NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_ordinateur) REFERENCES ordinateur(id_ordinateur),
+   FOREIGN KEY(id_technicien) REFERENCES technicien(id_technicien)
+);
