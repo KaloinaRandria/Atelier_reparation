@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<jsp:include page="includes/link/cssLink.jsp"/>
 <body>
-    <h1>Test</h1>
+<jsp:include page="includes/header.jsp"/>
+<jsp:include page="includes/sidebar.jsp"/>
+<jsp:include page="includes/footer.jsp"/>
+<jsp:include page="includes/link/jsLink.jsp"/>
 </body>
 </html>
