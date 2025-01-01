@@ -18,8 +18,8 @@
 
                         <!-- Vertical Form -->
                         <form class="row g-3">
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Select</label>
+                            <div class="row mb-3 mt-3">
+                                <label class="col-sm-2 col-form-label">Veuillez choisir une marque</label>
                                 <div class="col-sm-10">
                                     <div class="custom-select position-relative">
                                         <select class="form-select" id="optionsSelect" size="4">
@@ -84,8 +84,12 @@
                             </script>
 
                             <div class="col-12">
-                                <label for="inputEmail4" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4">
+                                <label for="inputEmail4" class="form-label">Modele</label>
+                                <input type="text" class="form-control" id="inputEmail4">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputEmail4" class="form-label">Numero de Serie</label>
+                                <input type="text" class="form-control" id="inputText">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Suivant</button>
