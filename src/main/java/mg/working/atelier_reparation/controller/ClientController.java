@@ -19,8 +19,12 @@ public class ClientController {
     @Autowired
     IdGenerator idGenerator ;
 
-    @GetMapping("/client/insertPage")
+    @GetMapping("/client/redirectInsert")
     public String redirectInsertClient() {
+        return "redirect:/client/insertClient";
+    }
+    @GetMapping("/client/insertClient")
+    public String goToInsertClient() {
         return "/home/client/insertClient";
     }
 
