@@ -2,6 +2,7 @@ package mg.working.atelier_reparation.controller;
 
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import mg.working.atelier_reparation.model.Client;
 import mg.working.atelier_reparation.services.ClientService;
 import mg.working.atelier_reparation.services.IdGenerator;
@@ -29,18 +30,21 @@ public class ClientController {
     }
 
     @PostMapping("/client/save")
-    public void insertClient(HttpServletResponse response,String nom, String prenom, String mail){
+    public String insertClient(HttpSession session, String nom, String prenom, String mail){
         Client client= new Client();
         client.setId(idGenerator);
         client.setNom(nom);
         client.setPrenom(prenom);
         client.setMail(mail);
 
-        try {
-            this.clientService.insertClient(client);
-            response.sendRedirect("/");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.clientService.insertClient(client);
+        session.setAttribute("client", client);
+        return "redirect:/client/insertOrdiClient";
+
+    }
+
+    @GetMapping("/client/ordi")
+    public String goToInsertOrdiClient() {
+        return "/home/client/insertOrdiClient";
     }
 }
