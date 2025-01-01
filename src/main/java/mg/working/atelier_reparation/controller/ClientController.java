@@ -7,6 +7,7 @@ import mg.working.atelier_reparation.services.ClientService;
 import mg.working.atelier_reparation.services.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
@@ -18,7 +19,11 @@ public class ClientController {
     @Autowired
     IdGenerator idGenerator ;
 
-   
+    @GetMapping("/client/insertPage")
+    public String redirectInsertClient() {
+        return "/home/client/insertClient";
+    }
+
     @PostMapping("/client/save")
     public void insertClient(HttpServletResponse response,String nom, String prenom, String mail){
         Client client= new Client();
