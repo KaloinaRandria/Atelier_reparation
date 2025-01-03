@@ -1,9 +1,15 @@
+<%@ page import="java.util.List" %>
+<%@ page import="mg.working.atelier_reparation.model.materiel.Marque" %>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../includes/link/cssLink.jsp"/>
 <body>
 <jsp:include page="../../includes/header.jsp"/>
 <jsp:include page="../../includes/sidebar.jsp"/>
+
+<%
+    List<Marque> marqueList = (List<Marque>) request.getAttribute("marqueList");
+%>
 <main id="main" class="main">
 
     <div class="pagetitle mb-5">
@@ -17,16 +23,16 @@
                         <h5 class="card-title">Veuillez remplir le formulaire</h5>
 
                         <!-- Vertical Form -->
-                        <form class="row g-3">
+                        <form method="post" action="/client/ordi/save" class="row g-3">
                             <div class="row mb-3 mt-3">
                                 <label class="col-sm-2 col-form-label">Veuillez choisir une marque</label>
                                 <div class="col-sm-10">
                                     <div class="custom-select position-relative">
                                         <select name="marque" class="form-select" id="optionsSelect" size="4">
                                             <option class="mb-3" disabled>Rechercher une option...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <% for (Marque marque : marqueList) {%>
+                                            <option value="<%=marque.getId()%>"> <%=marque.getLibelle()%></option>
+                                            <% } %>
                                         </select>
                                         <input type="text" class="form-control" id="searchInput" placeholder="Rechercher..." style="position: absolute; top: 0; left: 0; width: 100%; display: none;">
                                     </div>

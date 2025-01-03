@@ -18,7 +18,7 @@
                         <h5 class="card-title">Veuillez remplir le formulaire</h5>
 
                         <!-- Vertical Form -->
-                        <form class="row g-3">
+                        <form class="row g-3" method="post" action="/client/save">
                             <div class="col-12">
                                 <label for="nom" class="form-label">Nom</label>
                                 <input name="nom" type="text" class="form-control" id="nom">
