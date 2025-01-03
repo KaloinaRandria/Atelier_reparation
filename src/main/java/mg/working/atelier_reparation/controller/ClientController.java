@@ -66,7 +66,7 @@ public class ClientController {
         ordinateur.setClient(this.clientService.getLastClient());
 
         request.setAttribute("modele", modele);
-        return "home/client/insertNumSerie";
+        return "redirect:/home/dashboard";
     }
 
 
