@@ -17,4 +17,14 @@ public class HomeController {
          return "redirect:/home/dashboard";
 
      }
+
+     @GetMapping("/home/marque")
+     public String goToBrandPage() {
+        return "/home/brandPage";
+     }
+
+     @GetMapping("/home/redirectMarque")
+     public String redirectBrandPage(){
+        return "redirect:/home/marque";
+     }
 }
