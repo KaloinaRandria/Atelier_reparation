@@ -32,8 +32,13 @@ public class ClientController {
         return "redirect:/client/insertClient";
     }
 
+    @GetMapping("/client/insertClient")
+    public String goToinsertClient() {
+        return "home/client/insertClient";
+    }
+
     @PostMapping("/client/save")
-    public String insertClient(HttpServletRequest request, @RequestParam(name = "nom") String nom, @RequestParam(name = "prenom") String prenom, @RequestParam(name = "email") String mail){
+    public String insertClient(@RequestParam(name = "nom") String nom, @RequestParam(name = "prenom") String prenom, @RequestParam(name = "email") String mail){
         Client client= new Client();
         client.setId(idGenerator);
         client.setNom(nom);
@@ -41,30 +46,29 @@ public class ClientController {
         client.setMail(mail);
 
         this.clientService.insertClient(client);
-        request.setAttribute("client", client);
-        return "home/client/insertOrdiClient";
+        return "redirect:/client/ordi";
 
     }
 
     @PostMapping("/client/ordi/save")
-    public String insertModele(HttpServletRequest request,@RequestParam(name = "modele") String libelle ,@RequestParam(name = "marque") String idMarque) {
+    public String insertModele(HttpServletRequest request,@RequestParam(name = "modele") String libelle ,@RequestParam(name = "marque") String idMarque ,@RequestParam(name = "numSerie") String numSerie) {
         Modele modele = new Modele();
         modele.setId(idGenerator);
         modele.setLibelle(libelle);
         modele.setMarque(this.marqueService.getMarqueById(idMarque));
 
         this.modeleService.insertModele(modele);
+
+        Ordinateur ordinateur = new Ordinateur();
+        ordinateur.setId(idGenerator);
+        ordinateur.setNumSerie(numSerie);
+        ordinateur.setModele(modele);
+        ordinateur.setClient(this.clientService.getLastClient());
+
         request.setAttribute("modele", modele);
         return "home/client/insertNumSerie";
     }
 
-    @PostMapping("/client/numSerie/save")
-    public String insertNumSerie(String numSerie) {
-        Ordinateur ordinateur = new Ordinateur();
-        ordinateur.setId(idGenerator);
-        ordinateur.setNumSerie(numSerie);
-        return "redirect:/home/dashboard";
-    }
 
     @GetMapping("/client/ordi")
     public String goToInsertOrdiClient() {

@@ -87,6 +87,10 @@
                                 <label for="modele" class="form-label">Modele</label>
                                 <input name="modele" type="text" class="form-control" id="modele">
                             </div>
+                            <div class="col-12">
+                                <label for="numSerie" class="form-label">Numero de Serie</label>
+                                <input type="text" class="form-control" id="numSerie" name="numSerie">
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Suivant</button>
                             </div>
