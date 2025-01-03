@@ -18,7 +18,7 @@
                         <h5 class="card-title">Insertion Marque d'ordinateur</h5>
 
                         <!-- Vertical Form -->
-                        <form class="row g-3">
+                        <form method="post" action="/home/marque/save" class="row g-3">
                             <div class="col-12">
                                 <label for="marque" class="form-label">Ajouter une nouvelle marque</label>
                                 <input name="marque" type="text" class="form-control" id="marque">

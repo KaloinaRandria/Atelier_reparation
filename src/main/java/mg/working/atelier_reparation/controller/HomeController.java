@@ -1,16 +1,15 @@
 package mg.working.atelier_reparation.controller;
 
-import jakarta.servlet.http.HttpServletResponse;
 import mg.working.atelier_reparation.model.materiel.Marque;
 import mg.working.atelier_reparation.services.IdGenerator;
 import mg.working.atelier_reparation.services.materiel.MarqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
+
 
 @Controller
 public class HomeController {
@@ -39,7 +38,7 @@ public class HomeController {
         return "redirect:/home/marque";
      }
 
-     @RequestMapping("/home/marque/save")
+     @PostMapping("/home/marque/save")
      public String addNewBrand(@RequestParam(name = "marque") String marque) {
          Marque brand = new Marque();
          brand.setId(idGenerator);
@@ -47,6 +46,6 @@ public class HomeController {
 
          this.marqueService.insertMarque(brand);
 
-         return "redirect:/home/brandPage";
+         return "redirect:/home/marque";
      }
 }
