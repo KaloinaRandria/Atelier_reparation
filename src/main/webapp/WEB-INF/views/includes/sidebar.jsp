@@ -44,6 +44,11 @@
                         <i class="bi bi-circle"></i><span>Ajout Nouveau Technicien</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/home/redirectMarque">
+                        <i class="bi bi-circle"></i><span>Ajout Nouvelle marque</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Forms Nav -->
 
