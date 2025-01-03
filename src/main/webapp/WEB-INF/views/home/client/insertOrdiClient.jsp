@@ -22,7 +22,7 @@
                                 <label class="col-sm-2 col-form-label">Veuillez choisir une marque</label>
                                 <div class="col-sm-10">
                                     <div class="custom-select position-relative">
-                                        <select class="form-select" id="optionsSelect" size="4">
+                                        <select name="marque" class="form-select" id="optionsSelect" size="4">
                                             <option class="mb-3" disabled>Rechercher une option...</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -84,12 +84,8 @@
                             </script>
 
                             <div class="col-12">
-                                <label for="inputEmail4" class="form-label">Modele</label>
-                                <input type="text" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputEmail4" class="form-label">Numero de Serie</label>
-                                <input type="text" class="form-control" id="inputText">
+                                <label for="modele" class="form-label">Modele</label>
+                                <input name="modele" type="text" class="form-control" id="modele">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Suivant</button>
