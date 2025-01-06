@@ -38,6 +38,24 @@ CREATE TABLE ordinateur(
    FOREIGN KEY(id_client) REFERENCES client(id_client)
 );
 
+CREATE TABLE Mvt_stock(
+   id_mvt_stock SERIAL,
+   libelle VARCHAR(255) ,
+   date_mvt DATE NOT NULL,
+   PRIMARY KEY(id_mvt_stock)
+);
+
+CREATE TABLE Mvt_stock_fille(
+   id_mvt_stock_fille SERIAL,
+   entree INTEGER,
+   sortie INTEGER,
+   id_ordinateur INTEGER NOT NULL,
+   id_mvt_stock INTEGER NOT NULL,
+   PRIMARY KEY(id_mvt_stock_fille),
+   FOREIGN KEY(id_ordinateur) REFERENCES ordinateur(id_ordinateur),
+   FOREIGN KEY(id_mvt_stock) REFERENCES Mvt_stock(id_mvt_stock)
+);
+
 CREATE TABLE technicien(
    id_technicien SERIAL,
    nom VARCHAR(255)  NOT NULL,
@@ -50,15 +68,14 @@ CREATE TABLE technicien(
 );
 
 CREATE TABLE reparation(
-   id SERIAL,
+   id_reparation SERIAL,
    desc_probleme VARCHAR(255)  NOT NULL,
    date_depot DATE NOT NULL,
    date_retrait DATE,
-   cout_reparation NUMERIC(15,2)  ,
-   status INTEGER NOT NULL,
-   id_ordinateur INTEGER NOT NULL,
+   cout_reparation NUMERIC(15,2)   NOT NULL,
    id_technicien INTEGER NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id_ordinateur) REFERENCES ordinateur(id_ordinateur),
-   FOREIGN KEY(id_technicien) REFERENCES technicien(id_technicien)
+   id_ordinateur INTEGER NOT NULL,
+   PRIMARY KEY(id_reparation),
+   FOREIGN KEY(id_technicien) REFERENCES technicien(id_technicien),
+   FOREIGN KEY(id_ordinateur) REFERENCES ordinateur(id_ordinateur)
 );

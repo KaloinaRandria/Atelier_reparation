@@ -29,9 +29,6 @@ public class Reparation {
     Date dateRetrait;
     double coutReparation;
 
-    @Column(nullable = false)
-    int status = -1; //-1 = en attente , 0 = en cours , 1 = termine
-
     @ManyToOne @JoinColumn(name = "id_ordinateur" , referencedColumnName = "id" , nullable = false)
     Ordinateur ordinateur;
 
