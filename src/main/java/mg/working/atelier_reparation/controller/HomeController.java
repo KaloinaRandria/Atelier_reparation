@@ -1,8 +1,10 @@
 package mg.working.atelier_reparation.controller;
 
 import mg.working.atelier_reparation.model.materiel.Marque;
+import mg.working.atelier_reparation.model.util.Specialite;
 import mg.working.atelier_reparation.services.IdGenerator;
 import mg.working.atelier_reparation.services.materiel.MarqueService;
+import mg.working.atelier_reparation.services.util.SpecialiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ public class HomeController {
     IdGenerator idGenerator;
     @Autowired
     MarqueService marqueService;
+    @Autowired
+    SpecialiteService specialiteService;
 
     @GetMapping("/home/dashboard")
     public String goToDashboard() {
@@ -47,5 +51,25 @@ public class HomeController {
          this.marqueService.insertMarque(brand);
 
          return "redirect:/home/marque";
+     }
+
+     @GetMapping("/home/specialitePage")
+     public String goToSpecialitePage() {
+        return "/home/insertSpecialite";
+     }
+
+     @GetMapping("/home/redirectSpecialite")
+     public String redirectSpecialitePage(){
+        return "redirect:/home/specialitePage";
+     }
+     @PostMapping("/home/specialite/save")
+     public String addNewSpecialite(@RequestParam(name = "specialite") String specialite) {
+         Specialite specialite1 = new Specialite();
+         specialite1.setId(idGenerator);
+         specialite1.setLibelle(specialite);
+
+         this.specialiteService.insertSpecialite(specialite1);
+
+         return "redirect:/home/specialitePage";
      }
 }

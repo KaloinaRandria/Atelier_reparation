@@ -49,6 +49,11 @@
                         <i class="bi bi-circle"></i><span>Ajout Nouvelle marque</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/home/redirectSpecialite">
+                        <i class="bi bi-circle"></i><span>Ajout Nouvelle specialite</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Forms Nav -->
 
