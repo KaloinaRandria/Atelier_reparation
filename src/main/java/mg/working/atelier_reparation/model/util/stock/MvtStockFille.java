@@ -1,9 +1,6 @@
 package mg.working.atelier_reparation.model.util.stock;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +19,9 @@ public class MvtStockFille {
     String id;
     int entree;
     int sortie;
+    @ManyToOne @JoinColumn(name = "id_ordinateur" , referencedColumnName = "id")
     Ordinateur ordinateur;
+    @ManyToOne @JoinColumn(name = "id_mvt_stock" , referencedColumnName = "id_mvt_stock")
     MvtStock mvtStock;
 
     public void setId(IdGenerator idGenerator) {
