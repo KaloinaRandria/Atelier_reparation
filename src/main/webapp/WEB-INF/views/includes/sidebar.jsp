@@ -54,6 +54,11 @@
                         <i class="bi bi-circle"></i><span>Ajout Nouvelle specialite</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/probleme/redirectOrdinateur">
+                        <i class="bi bi-circle"></i><span>Liste Ordinateur a repare</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Forms Nav -->
 

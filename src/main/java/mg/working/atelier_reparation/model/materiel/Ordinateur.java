@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.atelier_reparation.model.Client;
+import mg.working.atelier_reparation.model.util.Probleme;
 import mg.working.atelier_reparation.services.IdGenerator;
 
 @Getter
@@ -26,6 +27,8 @@ public class Ordinateur {
 
     @ManyToOne @JoinColumn(name = "id_client" , referencedColumnName = "id" , nullable = false)
     Client client;
+    @ManyToOne @JoinColumn(name = "id_probleme" , referencedColumnName = "id")
+    Probleme probleme;
 
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("ORD" , "s_ordinateur");
