@@ -20,7 +20,7 @@ public class VProblemeOrdiService {
         List<VProblemeOrdi> valiny = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            String query = "SELECT * FROM v_probleme_ordinateur WHERE id_probleme = '" + idProbleme + "'";
+            String query = "SELECT * FROM v_probleme_ordi_libelle WHERE id_probleme = '" + idProbleme + "'";
             System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,6 +36,7 @@ public class VProblemeOrdiService {
                 vProblemeOrdi.setMarque(resultSet.getString("marque"));
                 vProblemeOrdi.setModele(resultSet.getString("modele"));
                 vProblemeOrdi.setIdProbleme(resultSet.getString("id_probleme"));
+                vProblemeOrdi.setProbleme(resultSet.getString("probleme"));
                 valiny.add(vProblemeOrdi);
 
             }

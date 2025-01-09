@@ -32,9 +32,8 @@
                             <form method="get" action="/probleme/ordinateur">
                             <label class="col-sm-2 col-form-label">Veuillez choisir un Probleme</label>
                             <div class="col-sm-10">
-                                <div class="custom-select position-relative">
-                                </div>
-                                <select name="idProbleme" class="form-select" size="4">
+                                <select name="idProbleme" class="form-select" >
+                                    <option selected >Voir les anomalies ...</option>
                                     <% for(Probleme probleme : problemes)  {%>
                                     <option value="<%=probleme.getId()%>"><%=probleme.getLibelle()%></option>
                                     <% } %>
@@ -52,10 +51,7 @@
                             <tr>
                                 <th scope="col">Reference Client</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Mail</th>
-                                <th scope="col">Marque</th>
-                                <th scope="col">Modele</th>
+                                <th scope="col">Ordinateur</th>
 
                             </tr>
                             </thead>
@@ -63,11 +59,8 @@
                             <% for (VOrdinateurClient vOrdinateurClient : ordinateurClients) {%>
                             <tr>
                                 <th scope="row"><%=vOrdinateurClient.getIdClient()%></th>
-                                <td><%=vOrdinateurClient.getNom()%></td>
-                                <td><%=vOrdinateurClient.getPrenom()%></td>
-                                <td><%=vOrdinateurClient.getMail()%></td>
-                                <td><%=vOrdinateurClient.getMarque()%></td>
-                                <td><%=vOrdinateurClient.getModele()%></td>
+                                <td><%=vOrdinateurClient.getNom()%> <%=vOrdinateurClient.getPrenom()%></td>
+                                <th><%=vOrdinateurClient.getMarque()%> <%=vOrdinateurClient.getModele()%></th>
                             </tr>
                             <% } %>
                             </tbody>
@@ -81,10 +74,7 @@
                             <tr>
                                 <th scope="col">Reference Client</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Mail</th>
-                                <th scope="col">Marque</th>
-                                <th scope="col">Modele</th>
+                                <th scope="col">Ordinateur</th>
                                 <th scope="col">Probleme</th>
 
                             </tr>
@@ -93,12 +83,9 @@
                             <% for (VProblemeOrdi problemeOrdi : problemeOrdis) {%>
                             <tr>
                                 <th><%=problemeOrdi.getIdClient()%></th>
-                                <th><%=problemeOrdi.getNom()%></th>
-                                <th><%=problemeOrdi.getPrenom()%></th>
-                                <th><%=problemeOrdi.getMail()%></th>
-                                <th><%=problemeOrdi.getMarque()%></th>
-                                <th><%=problemeOrdi.getModele()%></th>
-                                <th><%=problemeOrdi.getIdProbleme()%></th>
+                                <th><%=problemeOrdi.getNom()%> <%=problemeOrdi.getPrenom()%></th>
+                                <th><%=problemeOrdi.getMarque()%> <%=problemeOrdi.getModele()%></th>
+                                <th><%=problemeOrdi.getProbleme()%></th>
                             </tr>
                             <% } %>
                             </tbody>

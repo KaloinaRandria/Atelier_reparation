@@ -20,4 +20,5 @@ public class VProblemeOrdi {
     String mail;
     String marque;
     String modele;
+    String probleme;
 }
