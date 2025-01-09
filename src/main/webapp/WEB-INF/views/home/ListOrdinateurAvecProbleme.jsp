@@ -2,8 +2,7 @@
 <%@ page import="mg.working.atelier_reparation.model.view.VOrdinateurClient" %>
 <%@ page import="mg.working.atelier_reparation.model.view.VProblemeOrdi" %>
 <%@ page import="mg.working.atelier_reparation.model.util.Probleme" %>
-<%@ page import="mg.working.atelier_reparation.services.util.ProblemeService" %>
-<%@ page import="mg.working.atelier_reparation.services.ClientService" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../includes/link/cssLink.jsp"/>
@@ -16,7 +15,7 @@
 
     List<VProblemeOrdi> problemeOrdis = (List<VProblemeOrdi>) request.getAttribute("problemeOrdi");
     List<Probleme> problemes = (List<Probleme>) request.getAttribute("problemes");
-%>>
+%>
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -35,7 +34,7 @@
                             <div class="col-sm-10">
                                 <div class="custom-select position-relative">
                                 </div>
-                                <select name="idProbleme" class="form-select" id="optionsSelect" size="4">
+                                <select name="idProbleme" class="form-select" size="4">
                                     <% for(Probleme probleme : problemes)  {%>
                                     <option value="<%=probleme.getId()%>"><%=probleme.getLibelle()%></option>
                                     <% } %>
