@@ -13,6 +13,7 @@ import mg.working.atelier_reparation.services.VOrdinateurClientService;
 import mg.working.atelier_reparation.services.materiel.MarqueService;
 import mg.working.atelier_reparation.services.materiel.ModeleService;
 import mg.working.atelier_reparation.services.materiel.OrdinateurService;
+import mg.working.atelier_reparation.services.materiel.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,8 @@ public class ClientController {
     OrdinateurService ordinateurService;
     @Autowired
     VOrdinateurClientService vOrdinateurClientService;
+    @Autowired
+    TypeService typeService;
 
     @GetMapping("/client/redirectInsert")
     public String redirectInsertClient() {
@@ -63,7 +66,7 @@ public class ClientController {
     }
 
     @PostMapping("/client/ordi/save")
-    public String insertModele(HttpServletRequest request,@RequestParam(name = "modele") String libelle ,@RequestParam(name = "marque") String idMarque ,@RequestParam(name = "numSerie") String numSerie) {
+    public String insertModele(HttpServletRequest request,@RequestParam(name = "modele") String libelle ,@RequestParam(name = "marque") String idMarque ,@RequestParam(name = "numSerie") String numSerie,@RequestParam(name = "type") String type) {
         Modele modele = new Modele();
         modele.setId(idGenerator);
         modele.setLibelle(libelle);
@@ -76,6 +79,7 @@ public class ClientController {
         ordinateur.setNumSerie(numSerie);
         ordinateur.setModele(modele);
         ordinateur.setClient(this.clientService.getLastClient());
+        ordinateur.setType(this.typeService.getTypeById(type));
 
         this.ordinateurService.insertOrdinateur(ordinateur);
 

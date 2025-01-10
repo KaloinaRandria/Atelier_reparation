@@ -29,6 +29,8 @@ public class Ordinateur {
     Client client;
     @ManyToOne @JoinColumn(name = "id_probleme" , referencedColumnName = "id")
     Probleme probleme;
+    @ManyToOne @JoinColumn(name = "id_type" , referencedColumnName = "id")
+    Type type;
 
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("ORD" , "s_ordinateur");

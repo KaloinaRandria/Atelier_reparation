@@ -31,9 +31,12 @@ public class Reparation {
 
     @ManyToOne @JoinColumn(name = "id_ordinateur" , referencedColumnName = "id" , nullable = false)
     Ordinateur ordinateur;
-
     @ManyToOne @JoinColumn(name = "id_technicien" , referencedColumnName = "id" , nullable = false)
     Technicien technicien;
+    @ManyToOne @JoinColumn(name = "id_type_reparation" , referencedColumnName = "id")
+    TypeReparation typeReparation;
+    @ManyToOne @JoinColumn(name = "id_composant" , referencedColumnName = "id")
+    Composant composant;
 
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("REP","s_reparation");
