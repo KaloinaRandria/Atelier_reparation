@@ -3,10 +3,8 @@ package mg.working.atelier_reparation.services;
 import mg.working.atelier_reparation.model.Client;
 import mg.working.atelier_reparation.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Service

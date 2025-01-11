@@ -16,7 +16,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="components-alerts.html">
+                    <a href="/client/redirectList">
                         <i class="bi bi-circle"></i><span>Tous les Clients</span>
                     </a>
                 </li>
@@ -47,6 +47,16 @@
                 <li>
                     <a href="/home/redirectMarque">
                         <i class="bi bi-circle"></i><span>Ajout Nouvelle marque</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/home/redirectSpecialite">
+                        <i class="bi bi-circle"></i><span>Ajout Nouvelle specialite</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/probleme/redirectOrdinateur">
+                        <i class="bi bi-circle"></i><span>Liste Ordinateur a repare</span>
                     </a>
                 </li>
             </ul>

@@ -97,6 +97,13 @@
                                 <label for="numSerie" class="form-label">Numero de Serie</label>
                                 <input type="text" class="form-control" id="numSerie" name="numSerie">
                             </div>
+
+                            <div class="col-sm-10">
+                                <label for="type" class="form-label">Type</label>
+                                <select name="type" id="type" class="form-select" >
+                                    <option selected >Type d'Ordinateur</option>
+                                </select>
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Suivant</button>
                             </div>
