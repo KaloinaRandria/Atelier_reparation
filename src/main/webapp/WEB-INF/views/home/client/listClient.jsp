@@ -44,7 +44,7 @@
                                         <td>
 <%--                                         mankany am reparationController --%>
                                             <form method="get" action="">
-                                                <input type="hidden" value="<%=v.getIdClient()%>">
+                                                <input type="hidden" value="<%=v.getIdOrdinateur()%>">
                                                 <input type="submit" value="Faire diagnostique" class="btn btn-success">
                                             </form>
                                         </td>
