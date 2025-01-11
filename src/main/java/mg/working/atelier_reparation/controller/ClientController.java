@@ -7,10 +7,8 @@ import mg.working.atelier_reparation.model.materiel.Marque;
 import mg.working.atelier_reparation.model.materiel.Modele;
 import mg.working.atelier_reparation.model.materiel.Ordinateur;
 import mg.working.atelier_reparation.model.materiel.Type;
-import mg.working.atelier_reparation.model.view.VOrdinateurClient;
 import mg.working.atelier_reparation.services.ClientService;
 import mg.working.atelier_reparation.services.IdGenerator;
-import mg.working.atelier_reparation.services.VOrdinateurClientService;
 import mg.working.atelier_reparation.services.materiel.MarqueService;
 import mg.working.atelier_reparation.services.materiel.ModeleService;
 import mg.working.atelier_reparation.services.materiel.OrdinateurService;
@@ -36,8 +34,6 @@ public class ClientController {
     ModeleService modeleService;
     @Autowired
     OrdinateurService ordinateurService;
-    @Autowired
-    VOrdinateurClientService vOrdinateurClientService;
     @Autowired
     TypeService typeService;
 
@@ -101,15 +97,8 @@ public class ClientController {
     }
 
     @GetMapping("/client/list")
-    public String getListClient(HttpServletRequest request) {
-        List<VOrdinateurClient> vOrdinateurClients = this.vOrdinateurClientService.getClientWithPC();
+    public String listClient() {
 
-        request.setAttribute("vOrdinateurClients", vOrdinateurClients);
-        return "/home/client/listClient";
-    }
-
-    @GetMapping("/client/redirectList")
-    public String redirectListClient() {
-        return "redirect:/client/list";
+        return "";
     }
 }

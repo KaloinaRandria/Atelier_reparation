@@ -66,6 +66,7 @@ CREATE TABLE technicien(
 CREATE TABLE ordinateur(
    id_ordinateur SERIAL,
    num_serie VARCHAR(255)  NOT NULL,
+   isDiagnostic BOOLEAN NOT NULL,
    id_type_ordinateur INTEGER NOT NULL,
    id_modele INTEGER NOT NULL,
    id_client INTEGER NOT NULL,

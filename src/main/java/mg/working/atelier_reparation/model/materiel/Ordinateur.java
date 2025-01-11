@@ -21,6 +21,9 @@ public class Ordinateur {
     @Column(nullable = false , unique = true)
     String numSerie;
 
+    @Column(nullable = false)
+    Boolean isDiagnostic = false;
+
     @ManyToOne @JoinColumn(name = "id_modele" , referencedColumnName = "id" , nullable = false)
     Modele modele;
 
