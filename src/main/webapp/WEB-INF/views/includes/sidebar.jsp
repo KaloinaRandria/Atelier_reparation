@@ -35,12 +35,12 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="forms-elements.html">
+                    <a href="">
                         <i class="bi bi-circle"></i><span>Nos Techniciens</span>
                     </a>
                 </li>
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="">
                         <i class="bi bi-circle"></i><span>Ajout Nouveau Technicien</span>
                     </a>
                 </li>
@@ -52,11 +52,6 @@
                 <li>
                     <a href="/home/redirectSpecialite">
                         <i class="bi bi-circle"></i><span>Ajout Nouvelle specialite</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/probleme/redirectOrdinateur">
-                        <i class="bi bi-circle"></i><span>Liste Ordinateur a repare</span>
                     </a>
                 </li>
             </ul>
