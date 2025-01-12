@@ -1,6 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="mg.working.atelier_reparation.model.view.VClientOrdinateurList" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../includes/link/cssLink.jsp"/>
@@ -8,9 +5,6 @@
 <jsp:include page="../../includes/header.jsp"/>
 <jsp:include page="../../includes/sidebar.jsp"/>
 
-<%
-
-%>
 <main id="main" class="main">
 
     <div class="pagetitle">
