@@ -1,11 +1,13 @@
 package mg.working.atelier_reparation.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import mg.working.atelier_reparation.model.Technicien;
 import mg.working.atelier_reparation.model.materiel.Ordinateur;
 import mg.working.atelier_reparation.model.util.Composant;
 import mg.working.atelier_reparation.model.util.Reparation;
 import mg.working.atelier_reparation.model.util.TypeReparation;
+import mg.working.atelier_reparation.services.IdGenerator;
 import mg.working.atelier_reparation.services.TechnicienService;
 import mg.working.atelier_reparation.services.materiel.OrdinateurService;
 import mg.working.atelier_reparation.services.util.ComposantService;
@@ -22,6 +24,8 @@ import java.util.List;
 @Controller
 public class OrdinateurController {
     @Autowired
+    IdGenerator idGenerator;
+    @Autowired
     OrdinateurService ordinateurService;
     @Autowired
     TechnicienService technicienService;
@@ -34,9 +38,12 @@ public class OrdinateurController {
 
     @GetMapping("/ordinateur/reparation")
     public String goToReparationOrdinateur(HttpServletRequest request,
+                                           HttpSession session,
                                            @RequestParam(name = "ordinateur") String ordinateur) {
         Ordinateur ordinateur1 = this.ordinateurService.findOrdinateurById(ordinateur);
         ordinateur1.setIsDiagnostic(true);
+        request.setAttribute("ordinateur", ordinateur1);
+        this.ordinateurService.insertOrdinateur(ordinateur1);
 
         List<Technicien> techniciens = this.technicienService.listTechnicien();
         request.setAttribute("techniciens", techniciens);
@@ -50,12 +57,18 @@ public class OrdinateurController {
     }
 
     @PostMapping("/reparation/traitement")
-    public String traitementReparation(@RequestParam(name = "technicien") String idTechnicien,
+    public String traitementReparation(HttpSession session,
+                                       @RequestParam(name = "technicien") String idTechnicien,
                                        @RequestParam(name = "typeReparation") String idTypeReparation,
                                        @RequestParam(name = "composant") String idComposant,
                                        @RequestParam(name = "dateDebut") String dateDebut,
-                                       @RequestParam(name = "cout") String cout) {
+                                       @RequestParam(name = "cout") String cout,
+                                       @RequestParam(name = "description") String description,
+                                       @RequestParam(name = "ordinateur") String idOrdinateur) {
         Reparation reparation = new Reparation();
+        reparation.setId(idGenerator);
+        reparation.setOrdinateur(this.ordinateurService.findOrdinateurById(idOrdinateur));
+        reparation.setDescriptionProbleme(description);
         reparation.setTechnicien(this.technicienService.getTechnicienById(idTechnicien));
         reparation.setTypeReparation(this.typeReparationService.getTypeReparationById(idTypeReparation));
         reparation.setComposant(this.composantService.getComposant(idComposant));

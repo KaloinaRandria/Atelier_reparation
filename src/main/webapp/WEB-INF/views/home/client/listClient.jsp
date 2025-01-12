@@ -14,7 +14,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Liste Client Avec leur Problemes</h1>
+        <h1>Liste Client non diagnostiquer</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -43,7 +43,7 @@
                                         <td><%=v.getTypeOrdinateur()%></td>
                                         <td>
 <%--                                         mankany am reparationController --%>
-                                            <form method="get" action="">
+                                            <form method="get" action="/ordinateur/reparation">
                                                 <input type="hidden" name="ordinateur" value="<%=v.getIdOrdinateur()%>">
                                                 <input type="submit" value="Faire diagnostique" class="btn btn-success">
                                             </form>

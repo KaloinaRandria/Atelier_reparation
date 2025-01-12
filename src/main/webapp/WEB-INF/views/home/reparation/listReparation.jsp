@@ -21,11 +21,14 @@
                         <table class="table">
                             <thead>
                             <tr>
+                                <th scope="col">Reference Reparation</th>
                                 <th scope="col">Reference Client</th>
-                                <th scope="col">Nom</th>
                                 <th scope="col">Ordinateur</th>
+                                <th scope="col">Composant</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Cout (MDG)</th>
                                 <th scope="col">Type d'Ordinateur</th>
-                                <th></th>
+                                <th scope="col">Type Reparation</th>
                             </tr>
                             </thead>
                             <tbody>

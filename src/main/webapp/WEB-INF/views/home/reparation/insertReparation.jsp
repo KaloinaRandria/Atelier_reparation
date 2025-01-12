@@ -2,6 +2,7 @@
 <%@ page import="mg.working.atelier_reparation.model.Technicien" %>
 <%@ page import="mg.working.atelier_reparation.model.util.TypeReparation" %>
 <%@ page import="mg.working.atelier_reparation.model.util.Composant" %>
+<%@ page import="mg.working.atelier_reparation.model.materiel.Ordinateur" %>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../includes/link/cssLink.jsp"/>
@@ -15,6 +16,8 @@
     List<TypeReparation> typeReparations = (List<TypeReparation>) request.getAttribute("typeReparations");
 
     List<Composant> composants = (List<Composant>) request.getAttribute("composants");
+
+    Ordinateur ordinateur = (Ordinateur) request.getAttribute("ordinateur");
 
 %>
 <main id="main" class="main">
@@ -30,7 +33,7 @@
                         <h5 class="card-title">Veuillez remplir le formulaire</h5>
 
                         <!-- Vertical Form -->
-                        <form method="post" action="/client/ordi/save" class="row g-3">
+                        <form method="post" action="/reparation/traitement" class="row g-3">
                             <div class="col-sm-10">
                                 <label for="technicien" class="form-label">Type</label>
                                 <select name="technicien" id="technicien" class="form-select" >
@@ -59,6 +62,10 @@
                                 </select>
                             </div>
                             <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="description" name="description">
+                            </div>
+                            <div class="col-12">
                                 <label for="dateDebut" class="form-label">Date debut reparation</label>
                                 <input name="dateDebut" type="date" class="form-control" id="dateDebut">
                             </div>
@@ -66,6 +73,7 @@
                                 <label for="cout" class="form-label">Cout</label>
                                 <input type="number" class="form-control" id="cout" name="cout">
                             </div>
+                            <input type="hidden" name="ordinateur" value="<%=ordinateur.getId()%>">
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Valider</button>
                             </div>
