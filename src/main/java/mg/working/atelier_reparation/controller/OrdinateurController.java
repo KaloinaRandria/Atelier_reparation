@@ -52,6 +52,6 @@ public class OrdinateurController {
         reparation.setTypeReparation(this.typeReparationService.getTypeReparationById(idTypeReparation));
         reparation.setComposant(this.composantService.getComposant(idComposant));
 
-        return "";
+        return "/home/reparation/listReparation";
     }
 }
