@@ -1,6 +1,4 @@
 <%@ page import="java.util.List" %>
-<%@ page import="mg.working.atelier_reparation.model.materiel.Marque" %>
-<%@ page import="mg.working.atelier_reparation.model.materiel.Type" %>
 <%@ page import="mg.working.atelier_reparation.model.Technicien" %>
 <%@ page import="mg.working.atelier_reparation.model.util.TypeReparation" %>
 <%@ page import="mg.working.atelier_reparation.model.util.Composant" %>
