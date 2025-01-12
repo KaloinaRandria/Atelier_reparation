@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="mg.working.atelier_reparation.model.view.VOrdinateurClient" %>
+<%@ page import="mg.working.atelier_reparation.model.view.VClientOrdinateurList" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../includes/link/cssLink.jsp"/>
@@ -8,13 +9,12 @@
 <jsp:include page="../../includes/sidebar.jsp"/>
 
 <%
-    List<VOrdinateurClient> vOrdinateurClients = (List<VOrdinateurClient>) request.getAttribute("vOrdinateurClients");
-
-%>>
+    List<VClientOrdinateurList> vClientOrdinateurLists = (List<VClientOrdinateurList>) request.getAttribute("vClientOrdinateurLists");
+%>
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Liste Client</h1>
+        <h1>Liste Client non diagnostiquer</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -23,32 +23,34 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Default Table</h5>
-
                         <!-- Default Table -->
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">Reference Client</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Mail</th>
-                                <th scope="col">Marque</th>
-                                <th scope="col">Modele</th>
-
+                                <th scope="col">Ordinateur</th>
+                                <th scope="col">Type d'Ordinateur</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <% for (VOrdinateurClient vOrdinateurClient : vOrdinateurClients) {%>
-                            <tr>
-                                <th scope="row"><%=vOrdinateurClient.getIdClient()%></th>
-                                <td><%=vOrdinateurClient.getNom()%></td>
-                                <td><%=vOrdinateurClient.getPrenom()%></td>
-                                <td><%=vOrdinateurClient.getMail()%></td>
-                                <td><%=vOrdinateurClient.getMarque()%></td>
-                                <td><%=vOrdinateurClient.getModele()%></td>
+                                <% for (VClientOrdinateurList v : vClientOrdinateurLists) {%>
+                                    <tr>
+                                        <td><%=v.getIdClient() %></td>
+                                        <td><%=v.getNomClient()%> <%=v.getPrenomClient()%></td>
+                                        <td><%=v.getMarque()%> <%=v.getModele()%></td>
+                                        <td><%=v.getTypeOrdinateur()%></td>
+                                        <td>
+<%--                                         mankany am reparationController --%>
+                                            <form method="get" action="/ordinateur/reparation">
+                                                <input type="hidden" name="ordinateur" value="<%=v.getIdOrdinateur()%>">
+                                                <input type="submit" value="Faire diagnostique" class="btn btn-success">
+                                            </form>
+                                        </td>
+                                    </tr>
 
-                            </tr>
-                            <% } %>
+                                <% } %>
                             </tbody>
                         </table>
                         <!-- End Default Table Example -->

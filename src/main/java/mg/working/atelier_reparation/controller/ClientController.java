@@ -6,10 +6,11 @@ import mg.working.atelier_reparation.model.Client;
 import mg.working.atelier_reparation.model.materiel.Marque;
 import mg.working.atelier_reparation.model.materiel.Modele;
 import mg.working.atelier_reparation.model.materiel.Ordinateur;
-import mg.working.atelier_reparation.model.view.VOrdinateurClient;
+import mg.working.atelier_reparation.model.materiel.Type;
+import mg.working.atelier_reparation.model.view.VClientOrdinateurList;
 import mg.working.atelier_reparation.services.ClientService;
 import mg.working.atelier_reparation.services.IdGenerator;
-import mg.working.atelier_reparation.services.VOrdinateurClientService;
+import mg.working.atelier_reparation.services.VClientOrdinateurService;
 import mg.working.atelier_reparation.services.materiel.MarqueService;
 import mg.working.atelier_reparation.services.materiel.ModeleService;
 import mg.working.atelier_reparation.services.materiel.OrdinateurService;
@@ -36,9 +37,9 @@ public class ClientController {
     @Autowired
     OrdinateurService ordinateurService;
     @Autowired
-    VOrdinateurClientService vOrdinateurClientService;
-    @Autowired
     TypeService typeService;
+    @Autowired
+    VClientOrdinateurService vClientOrdinateurService;
 
     @GetMapping("/client/redirectInsert")
     public String redirectInsertClient() {
@@ -90,18 +91,19 @@ public class ClientController {
     @GetMapping("/client/ordi")
     public String goToInsertOrdiClient(HttpServletRequest request) {
         List<Marque>  marqueList = this.marqueService.getAllMarques();
+        List<Type> types = this.typeService.getAllTypes();
         if (marqueList == null || marqueList.isEmpty()) {
             throw new RuntimeException("La liste des marques est vide ou null !");
         }
         request.setAttribute("marqueList", marqueList);
+        request.setAttribute("types", types);
         return "/home/client/insertOrdiClient";
     }
 
     @GetMapping("/client/list")
-    public String getListClient(HttpServletRequest request) {
-        List<VOrdinateurClient> vOrdinateurClients = this.vOrdinateurClientService.getClientWithPC();
-
-        request.setAttribute("vOrdinateurClients", vOrdinateurClients);
+    public String listClient(HttpServletRequest request) {
+        List<VClientOrdinateurList> vClientOrdinateurLists = this.vClientOrdinateurService.getListClientOrdinateur();
+        request.setAttribute("vClientOrdinateurLists", vClientOrdinateurLists);
         return "/home/client/listClient";
     }
 

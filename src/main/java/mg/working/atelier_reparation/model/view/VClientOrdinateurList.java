@@ -10,15 +10,17 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "v_probleme_ordinateur")
-public class VProblemeOrdi {
-    String idClient;
+@Table(name = "v_client_ordinateur_list")
+public class VClientOrdinateurList {
     String idOrdinateur;
-    String idProbleme;
-    String nom;
-    String prenom;
-    String mail;
-    String marque;
+    String numSerie;
+    String idModele;
     String modele;
-    String probleme;
+    String marque;
+    String idClient;
+    String nomClient;
+    String prenomClient;
+    String idTypeOrdinateur;
+    String TypeOrdinateur;
+    String diagnostic;
 }

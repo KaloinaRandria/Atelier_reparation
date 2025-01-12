@@ -41,4 +41,14 @@ public class Reparation {
     public void setId(IdGenerator idGenerator) {
         this.id = idGenerator.generateId("REP","s_reparation");
     }
+
+    public void setDateDepot(String date) {
+        this.dateDepot = Date.valueOf(date);
+    }
+    public void setDateRetrait(String date) {
+        this.dateRetrait = Date.valueOf(date);
+    }
+    public void setCoutReparation(String cout) {
+        this.coutReparation = Double.parseDouble(cout);
+    }
 }

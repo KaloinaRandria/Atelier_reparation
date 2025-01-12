@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="mg.working.atelier_reparation.model.materiel.Marque" %>
+<%@ page import="mg.working.atelier_reparation.model.materiel.Type" %>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../includes/link/cssLink.jsp"/>
@@ -9,6 +10,8 @@
 
 <%
     List<Marque> marqueList = (List<Marque>) request.getAttribute("marqueList");
+    List<Type> types = (List<Type>) request.getAttribute("types");
+
 %>
 <main id="main" class="main">
 
@@ -102,6 +105,9 @@
                                 <label for="type" class="form-label">Type</label>
                                 <select name="type" id="type" class="form-select" >
                                     <option selected >Type d'Ordinateur</option>
+                                    <% for(Type type : types) {%>
+                                    <option value="<%=type.getId()%>"><%=type.getLibelle()%></option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="text-center">

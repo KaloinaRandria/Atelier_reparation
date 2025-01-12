@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="mg.working.atelier_reparation.model.view.VOrdinateurClient" %>
 <%@ page import="mg.working.atelier_reparation.model.view.VProblemeOrdi" %>
-<%@ page import="mg.working.atelier_reparation.model.util.Probleme" %>
+<%--<%@ page import="mg.working.atelier_reparation.model.util.Probleme" %>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     List<VOrdinateurClient> ordinateurClients = (List<VOrdinateurClient>) request.getAttribute("ordinateurClients");
 
     List<VProblemeOrdi> problemeOrdis = (List<VProblemeOrdi>) request.getAttribute("problemeOrdi");
-    List<Probleme> problemes = (List<Probleme>) request.getAttribute("problemes");
+//    List<Probleme> problemes = (List<Probleme>) request.getAttribute("problemes");
 %>
 <main id="main" class="main">
 
@@ -34,9 +34,9 @@
                             <div class="col-sm-10">
                                 <select name="idProbleme" class="form-select" >
                                     <option selected >Voir les anomalies ...</option>
-                                    <% for(Probleme probleme : problemes)  {%>
-                                    <option value="<%=probleme.getId()%>"><%=probleme.getLibelle()%></option>
-                                    <% } %>
+<%--                                    <% for(Probleme probleme : problemes)  {%>--%>
+<%--                                    <option value="<%=probleme.getId()%>"><%=probleme.getLibelle()%></option>--%>
+<%--                                    <% } %>--%>
                                 </select>
                             </div>
                                 <div class="mt-2">
