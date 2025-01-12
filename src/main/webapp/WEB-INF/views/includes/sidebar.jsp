@@ -63,8 +63,8 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="tables-general.html">
-                        <i class="bi bi-circle"></i><span>En attente</span>
+                    <a href="/reparation/redirectList">
+                        <i class="bi bi-circle"></i><span>Liste Reparation</span>
                     </a>
                 </li>
                 <li>

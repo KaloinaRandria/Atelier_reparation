@@ -25,6 +25,7 @@ public class VReparationOrdinateur {
     String ordinateur;
     String marque;
     String modele;
+    String idTypeOrdinateur;
     String typeOrdinateur;
     String idClient;
     String nomClient;

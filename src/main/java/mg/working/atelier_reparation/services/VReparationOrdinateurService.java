@@ -23,10 +23,10 @@ public class VReparationOrdinateurService {
             query += " AND id_composant= ? ";
         }
         if(!idTypeOrdinateur.equals("")){
-            query += " AND id_ordinateur= ? ";
+            query += " AND id_type_ordinateur= ? ";
         }
         if(!idTypeReparation.equals("")){
-            query += " AND id_reparation= ? ";
+            query += " AND id_type_reparation= ? ";
         }
 
         return query;
@@ -37,6 +37,8 @@ public class VReparationOrdinateurService {
         try {
             Connection connection = dataSource.getConnection();
             String query = this.sql(idComposant , idTypeOrdinateur , idTypeReparation);
+
+            System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             int indexParameter = 1;
 
@@ -58,21 +60,23 @@ public class VReparationOrdinateurService {
             while(resultSet.next()){
                 vReparationOrdinateur = new VReparationOrdinateur();
                 vReparationOrdinateur.setIdReparation(resultSet.getString("id_reparation"));
-                vReparationOrdinateur.setCoutReparation(resultSet.getDouble("cout_reparation"));
+                vReparationOrdinateur.setCoutReparation(resultSet.getDouble("cout"));
                 vReparationOrdinateur.setDateDepot(resultSet.getDate("date_depot"));
                 vReparationOrdinateur.setDateRetrait(resultSet.getDate("date_retrait"));
-                vReparationOrdinateur.setDescirption(resultSet.getString("descirption"));
+                vReparationOrdinateur.setDescirption(resultSet.getString("description"));
                 vReparationOrdinateur.setIdComposant(resultSet.getString("id_composant"));
                 vReparationOrdinateur.setComposant(resultSet.getString("composant"));
                 vReparationOrdinateur.setIdOrdinateur(resultSet.getString("id_ordinateur"));
                 vReparationOrdinateur.setMarque(resultSet.getString("marque"));
                 vReparationOrdinateur.setModele(resultSet.getString("modele"));
+                vReparationOrdinateur.setIdTypeOrdinateur(resultSet.getString("id_type_ordinateur"));
                 vReparationOrdinateur.setTypeOrdinateur(resultSet.getString("type_ordinateur"));
                 vReparationOrdinateur.setIdClient(resultSet.getString("id_client"));
                 vReparationOrdinateur.setNomClient(resultSet.getString("nom_client"));
                 vReparationOrdinateur.setPrenomClient(resultSet.getString("prenom_client"));
                 vReparationOrdinateur.setIdTechnicien(resultSet.getString("id_technicien"));
                 vReparationOrdinateur.setPrenomTechnicien(resultSet.getString("prenom_technicien"));
+                vReparationOrdinateur.setTypeReparation(resultSet.getString("id_type_reparation"));
                 vReparationOrdinateur.setTypeReparation(resultSet.getString("type_reparation"));
                 listReparationOrdinateur.add(vReparationOrdinateur);
             }

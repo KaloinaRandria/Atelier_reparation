@@ -35,27 +35,27 @@
                         <!-- Vertical Form -->
                         <form method="post" action="/reparation/traitement" class="row g-3">
                             <div class="col-sm-10">
-                                <label for="technicien" class="form-label">Type</label>
+                                <label for="technicien" class="form-label">Techniciens</label>
                                 <select name="technicien" id="technicien" class="form-select" >
-                                    <option selected >Techniciens</option>
+                                    <option selected value="">Techniciens</option>
                                     <% for(Technicien technicien : techniciens) {%>
                                     <option value="<%=technicien.getId()%>"><%=technicien.getNom()%> <%=technicien.getPrenom()%></option>
                                     <% } %>
                                 </select>
                             </div>
                             <div class="col-sm-10">
-                                <label for="typeReparation" class="form-label">Type</label>
+                                <label for="typeReparation" class="form-label">Type Reparation</label>
                                 <select name="typeReparation" id="typeReparation" class="form-select" >
-                                    <option selected >Type Reparation</option>
+                                    <option selected value="">Type Reparation</option>
                                     <% for(TypeReparation typeReparation : typeReparations) {%>
                                     <option value="<%=typeReparation.getId()%>"><%=typeReparation.getLiblle()%></option>
                                     <% } %>
                                 </select>
                             </div>
                             <div class="col-sm-10">
-                                <label for="composant" class="form-label">Type</label>
+                                <label for="composant" class="form-label">Composant</label>
                                 <select name="composant" id="composant" class="form-select" >
-                                    <option selected >Composants</option>
+                                    <option selected value="">Composants</option>
                                     <% for(Composant composant : composants) {%>
                                     <option value="<%=composant.getId()%>"><%=composant.getLibelle()%></option>
                                     <% } %>
