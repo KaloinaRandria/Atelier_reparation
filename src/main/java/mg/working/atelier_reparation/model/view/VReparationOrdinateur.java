@@ -38,11 +38,23 @@ public class VReparationOrdinateur {
         this.coutReparation = Double.parseDouble(coutReparation);
     }
 
+    public void setCoutReparation(double coutReparation) {
+        this.coutReparation = coutReparation;
+    }
+
     public void setDateDepot(String dateDepot) {
         this.dateDepot = Date.valueOf(dateDepot);
     }
 
     public void setDateRetrait(String dateRetrait) {
         this.dateRetrait = Date.valueOf(dateRetrait);
+    }
+
+    public void setDateDepot(Date dateDepot) {
+        this.dateDepot = dateDepot;
+    }
+
+    public void setDateRetrait(Date dateRetrait) {
+        this.dateRetrait = dateRetrait;
     }
 }
