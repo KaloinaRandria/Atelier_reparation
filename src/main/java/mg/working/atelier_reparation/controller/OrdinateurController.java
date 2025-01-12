@@ -9,6 +9,7 @@ import mg.working.atelier_reparation.model.util.TypeReparation;
 import mg.working.atelier_reparation.services.TechnicienService;
 import mg.working.atelier_reparation.services.materiel.OrdinateurService;
 import mg.working.atelier_reparation.services.util.ComposantService;
+import mg.working.atelier_reparation.services.util.ReparationService;
 import mg.working.atelier_reparation.services.util.TypeReparationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +29,12 @@ public class OrdinateurController {
     TypeReparationService typeReparationService;
     @Autowired
     ComposantService composantService;
+    @Autowired
+    ReparationService reparationService;
 
     @GetMapping("/ordinateur/reparation")
-    public String goToReparationOrdinateur(HttpServletRequest request,@RequestParam(name = "ordinateur") String ordinateur) {
+    public String goToReparationOrdinateur(HttpServletRequest request,
+                                           @RequestParam(name = "ordinateur") String ordinateur) {
         Ordinateur ordinateur1 = this.ordinateurService.findOrdinateurById(ordinateur);
         ordinateur1.setIsDiagnostic(true);
 
@@ -46,12 +50,19 @@ public class OrdinateurController {
     }
 
     @PostMapping("/reparation/traitement")
-    public String traitementReparation(@RequestParam(name = "technicien") String idTechnicien ,@RequestParam(name = "typeReparation") String idTypeReparation ,@RequestParam(name = "composant") String idComposant ,@RequestParam(name = "dateDebut") String dateDebut ,@RequestParam(name = "cout") String cout) {
+    public String traitementReparation(@RequestParam(name = "technicien") String idTechnicien,
+                                       @RequestParam(name = "typeReparation") String idTypeReparation,
+                                       @RequestParam(name = "composant") String idComposant,
+                                       @RequestParam(name = "dateDebut") String dateDebut,
+                                       @RequestParam(name = "cout") String cout) {
         Reparation reparation = new Reparation();
         reparation.setTechnicien(this.technicienService.getTechnicienById(idTechnicien));
         reparation.setTypeReparation(this.typeReparationService.getTypeReparationById(idTypeReparation));
         reparation.setComposant(this.composantService.getComposant(idComposant));
+        reparation.setDateDepot(dateDebut);
+        reparation.setCoutReparation(cout);
 
+        this.reparationService.insertReparation(reparation);
         return "/home/reparation/listReparation";
     }
 }
