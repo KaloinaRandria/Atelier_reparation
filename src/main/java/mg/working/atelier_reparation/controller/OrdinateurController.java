@@ -97,9 +97,7 @@ public class OrdinateurController {
         request.setAttribute("typeReparations", typeReparations);
         List<Type> typeOrdinateurs = this.typeService.getAllTypes();
         request.setAttribute("typeOrdinateurs", typeOrdinateurs);
-        System.out.println("idc " + idComposant);
-        System.out.println("idto " + idTypeOrdinateur);
-        System.out.println("idtr " + idTypeReparation);
+
         List<VReparationOrdinateur> vReparationOrdinateurs;
         vReparationOrdinateurs = this.vReparationOrdinateurService.getListReparationOrdinateurFiltre(idComposant,idTypeOrdinateur,idTypeReparation);
         request.setAttribute("vReparationOrdinateurs", vReparationOrdinateurs);
@@ -110,5 +108,33 @@ public class OrdinateurController {
     @GetMapping("/reparation/redirectList")
     public String redirectListReparation() {
         return "redirect:/reparation/list";
+    }
+
+    @GetMapping("/reparation/termine")
+    public String termineReparation(@RequestParam(name = "dateRetrait") String dateRetrait,
+                                    @RequestParam(name = "idReparation") String idReparation) {
+        Reparation reparation = this.reparationService.getReparationById(idReparation);
+        reparation.setDateRetrait(dateRetrait);
+
+        this.reparationService.insertReparation(reparation);
+        return "redirect:/reparation/redirectList";
+    }
+
+    @GetMapping("/reparation/listTermine")
+    public String goToListReparationTermine(HttpServletRequest request,@RequestParam(name = "id_composant" , defaultValue = "") String idComposant,
+                                     @RequestParam(name = "id_type_ordinateur" , defaultValue = "") String idTypeOrdinateur,
+                                     @RequestParam(name = "id_type_reparation" , defaultValue = "") String idTypeReparation) {
+
+        List<Composant> composants = this.composantService.getComposants();
+        request.setAttribute("composants", composants);
+        List<TypeReparation> typeReparations = this.typeReparationService.getAllTypeReparation();
+        request.setAttribute("typeReparations", typeReparations);
+        List<Type> typeOrdinateurs = this.typeService.getAllTypes();
+        request.setAttribute("typeOrdinateurs", typeOrdinateurs);
+        List<VReparationOrdinateur> vReparationOrdinateurs;
+        vReparationOrdinateurs = this.vReparationOrdinateurService.getListReparationOrdinateurFiltreWithDateRetrait(idComposant,idTypeOrdinateur,idTypeReparation);
+        request.setAttribute("vReparationOrdinateurs", vReparationOrdinateurs);
+
+        return "/home/reparation/listReparationTermine";
     }
 }
