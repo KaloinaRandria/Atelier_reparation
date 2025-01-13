@@ -10,6 +10,7 @@ import mg.working.atelier_reparation.model.materiel.Ordinateur;
 import mg.working.atelier_reparation.services.IdGenerator;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -46,6 +47,9 @@ public class Reparation {
         this.dateDepot = Date.valueOf(date);
     }
     public void setDateRetrait(String date) {
+        if (Date.valueOf(date).after(Date.valueOf(LocalDate.now()))) {
+            throw new IllegalArgumentException("La date de retrait ne peut pas être dans le futur.");
+        }
         this.dateRetrait = Date.valueOf(date);
     }
     public void setCoutReparation(String cout) {

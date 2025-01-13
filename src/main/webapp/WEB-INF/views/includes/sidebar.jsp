@@ -63,17 +63,17 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/reparation/redirectList">
-                        <i class="bi bi-circle"></i><span>Liste Reparation</span>
+                    <a href="/client/redirectList">
+                        <i class="bi bi-circle"></i><span>En Attente</span>
                     </a>
                 </li>
                 <li>
-                    <a href="tables-data.html">
+                    <a href="/reparation/redirectList">
                         <i class="bi bi-circle"></i><span>En cours</span>
                     </a>
                 </li>
                 <li>
-                    <a href="tables-data.html">
+                    <a href="/reparation/listTermine">
                         <i class="bi bi-circle"></i><span>Termine</span>
                     </a>
                 </li>

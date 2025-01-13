@@ -36,7 +36,7 @@ public class VReparationOrdinateurService {
         List<VReparationOrdinateur> listReparationOrdinateur = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            String query = this.sql(idComposant , idTypeOrdinateur , idTypeReparation);
+            String query = this.sql(idComposant , idTypeOrdinateur , idTypeReparation) + " AND date_retrait is NULL";
 
             System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -88,4 +88,62 @@ public class VReparationOrdinateurService {
         }
         return listReparationOrdinateur;
     }
+
+    public List<VReparationOrdinateur> getListReparationOrdinateurFiltreWithDateRetrait(String idComposant , String idTypeOrdinateur , String idTypeReparation) {
+        List<VReparationOrdinateur> listReparationOrdinateur = new ArrayList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            String query = this.sql(idComposant , idTypeOrdinateur , idTypeReparation) + " AND date_retrait is not NULL";
+
+            System.out.println(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            int indexParameter = 1;
+
+            if(!idComposant.equals("")){
+                preparedStatement.setString(indexParameter, idComposant);
+                indexParameter++;
+            }
+            if(!idTypeOrdinateur.equals("")){
+                preparedStatement.setString(indexParameter, idTypeOrdinateur);
+                indexParameter++;
+            }
+            if(!idTypeReparation.equals("")){
+                preparedStatement.setString(indexParameter, idTypeReparation);
+                indexParameter++;
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            VReparationOrdinateur vReparationOrdinateur;
+            while(resultSet.next()){
+                vReparationOrdinateur = new VReparationOrdinateur();
+                vReparationOrdinateur.setIdReparation(resultSet.getString("id_reparation"));
+                vReparationOrdinateur.setCoutReparation(resultSet.getDouble("cout"));
+                vReparationOrdinateur.setDateDepot(resultSet.getDate("date_depot"));
+                vReparationOrdinateur.setDateRetrait(resultSet.getDate("date_retrait"));
+                vReparationOrdinateur.setDescirption(resultSet.getString("description"));
+                vReparationOrdinateur.setIdComposant(resultSet.getString("id_composant"));
+                vReparationOrdinateur.setComposant(resultSet.getString("composant"));
+                vReparationOrdinateur.setIdOrdinateur(resultSet.getString("id_ordinateur"));
+                vReparationOrdinateur.setMarque(resultSet.getString("marque"));
+                vReparationOrdinateur.setModele(resultSet.getString("modele"));
+                vReparationOrdinateur.setIdTypeOrdinateur(resultSet.getString("id_type_ordinateur"));
+                vReparationOrdinateur.setTypeOrdinateur(resultSet.getString("type_ordinateur"));
+                vReparationOrdinateur.setIdClient(resultSet.getString("id_client"));
+                vReparationOrdinateur.setNomClient(resultSet.getString("nom_client"));
+                vReparationOrdinateur.setPrenomClient(resultSet.getString("prenom_client"));
+                vReparationOrdinateur.setIdTechnicien(resultSet.getString("id_technicien"));
+                vReparationOrdinateur.setPrenomTechnicien(resultSet.getString("prenom_technicien"));
+                vReparationOrdinateur.setTypeReparation(resultSet.getString("id_type_reparation"));
+                vReparationOrdinateur.setTypeReparation(resultSet.getString("type_reparation"));
+                listReparationOrdinateur.add(vReparationOrdinateur);
+            }
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return listReparationOrdinateur;
+    }
+
 }

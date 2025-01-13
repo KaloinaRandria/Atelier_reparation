@@ -19,4 +19,7 @@ public class ReparationService {
     public List<Reparation> getAllReparations() {
         return this.reparationRepository.findAll();
     }
+    public Reparation getReparationById(String id) {
+        return this.reparationRepository.findById(id).orElse(null);
+    }
 }

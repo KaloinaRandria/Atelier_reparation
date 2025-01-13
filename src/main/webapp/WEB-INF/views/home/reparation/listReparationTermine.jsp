@@ -85,32 +85,22 @@
                                 <th scope="col">Cout (MDG)</th>
                                 <th scope="col">Type d'Ordinateur</th>
                                 <th scope="col">Type Reparation</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                                <% for(VReparationOrdinateur vReparationOrdinateur : vReparationOrdinateurs) {%>
-                                <tr>
-                                    <td><%=vReparationOrdinateur.getIdReparation() %></td>
-                                    <td><%=vReparationOrdinateur.getIdClient() %> |
-                                        <%=vReparationOrdinateur.getNomClient() +" "+ vReparationOrdinateur.getPrenomClient()%> </td>
-                                    <td><%=vReparationOrdinateur.getMarque() +" "+vReparationOrdinateur.getModele() %></td>
-                                    <td><%=vReparationOrdinateur.getComposant()%></td>
-                                    <td><%=vReparationOrdinateur.getDescirption()%></td>
-                                    <td><%=vReparationOrdinateur.getCoutReparation()%></td>
-                                    <td><%=vReparationOrdinateur.getTypeOrdinateur()%></td>
-                                    <td><%=vReparationOrdinateur.getTypeReparation()%></td>
-                                    <td>
-                                        <form action="/reparation/termine" method="get">
-                                            <input type="hidden" name="idReparation" value="<%=vReparationOrdinateur.getIdReparation()%>">
-                                            <div class="row d-flex justify-content-between">
-                                                <input type="date" name="dateRetrait" id="dateRetrait" class="form-control mb-2">
-                                                <input type="submit" value="Termine" class="btn btn-outline-success">
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <% } %>
+                            <% for(VReparationOrdinateur vReparationOrdinateur : vReparationOrdinateurs) {%>
+                            <tr>
+                                <td><%=vReparationOrdinateur.getIdReparation() %></td>
+                                <td><%=vReparationOrdinateur.getIdClient() %> |
+                                    <%=vReparationOrdinateur.getNomClient() +" "+ vReparationOrdinateur.getPrenomClient()%> </td>
+                                <td><%=vReparationOrdinateur.getMarque() +" "+vReparationOrdinateur.getModele() %></td>
+                                <td><%=vReparationOrdinateur.getComposant()%></td>
+                                <td><%=vReparationOrdinateur.getDescirption()%></td>
+                                <td><%=vReparationOrdinateur.getCoutReparation()%></td>
+                                <td><%=vReparationOrdinateur.getTypeOrdinateur()%></td>
+                                <td><%=vReparationOrdinateur.getTypeReparation()%></td>
+                            </tr>
+                            <% } %>
                             </tbody>
                         </table>
                         <!-- End Default Table Example -->
