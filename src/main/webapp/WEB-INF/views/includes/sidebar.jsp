@@ -31,7 +31,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Techniciens</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-journal-text"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -52,6 +52,16 @@
                 <li>
                     <a href="/home/redirectSpecialite">
                         <i class="bi bi-circle"></i><span>Ajout Nouvelle specialite</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/composant/redirectInsert">
+                        <i class="bi bi-circle"></i><span>Ajout Composant Du Mois</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/composantMois/redirectList">
+                        <i class="bi bi-circle"></i><span>List Composant du Mois</span>
                     </a>
                 </li>
             </ul>
