@@ -29,7 +29,7 @@
                         <h5 class="card-title">Rechercher</h5>
 
                         <!-- Vertical Form -->
-                        <form method="get" action="/reparation/list" class="row g-3">
+                        <form method="get" action="/reparation/listTermine" class="row g-3">
                             <div class="col-sm-10">
                                 <label for="typeOrdinateur" class="form-label">Type Ordinateur</label>
                                 <select name="id_type_ordinateur" id="typeOrdinateur" class="form-select" >
