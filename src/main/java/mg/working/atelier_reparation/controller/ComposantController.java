@@ -53,11 +53,16 @@ public class ComposantController {
     public String listComposantMois(HttpServletRequest request) {
         String mois = request.getParameter("mois");
         String annee = request.getParameter("annee");
-        if (mois != null && annee != null) {
+        if (mois != null && !mois.isEmpty() && annee != null) {
             List<ComposantMois> composantMois = this.composantMoisService.getComposantMois(mois, annee);
             request.setAttribute("composantMois", composantMois);
             request.setAttribute("annee", annee);
             request.setAttribute("mois", mois);
+        }
+        if (mois == null || mois.isEmpty()) {
+            List<ComposantMois> composantAnnee =  this.composantMoisService.getComposantAnnee(annee);
+            request.setAttribute("composantMois", composantAnnee);
+            request.setAttribute("annee", annee);
         }
         List<String> moisList = this.composantMoisService.getMonthLibelle();
 

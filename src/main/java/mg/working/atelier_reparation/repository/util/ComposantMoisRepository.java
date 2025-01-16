@@ -11,4 +11,7 @@ import java.util.List;
 public interface ComposantMoisRepository extends JpaRepository<ComposantMois, String> {
     @Query("select c from ComposantMois c where YEAR(c.date) = :annee AND MONTH(c.date) = :mois")
     List<ComposantMois> findListByMoisAnnee(String mois , String annee);
+
+    @Query("select c from ComposantMois c where YEAR(c.date) = :annee")
+    List<ComposantMois> findComposantAnnee(String annee);
 }

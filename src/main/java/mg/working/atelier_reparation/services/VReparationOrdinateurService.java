@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -27,6 +28,26 @@ public class VReparationOrdinateurService {
         }
         if(!idTypeReparation.equals("")){
             query += " AND id_type_reparation= ? ";
+        }
+
+        return query;
+    }
+
+
+    public String sql1(String idComposant , String idTypeOrdinateur , String idTypeReparation, String dateRetrait) {
+        String query = "SELECT * FROM v_reparation_ordinateur_list WHERE 1=1";
+        if(!idComposant.equals("")){
+            query += " AND id_composant= ? ";
+        }
+        if(!idTypeOrdinateur.equals("")){
+            query += " AND id_type_ordinateur= ? ";
+        }
+        if(!idTypeReparation.equals("")){
+            query += " AND id_type_reparation= ? ";
+        }
+
+        if(!dateRetrait.equals("")){
+            query += " AND date_retrait= ? ";
         }
 
         return query;
@@ -89,11 +110,11 @@ public class VReparationOrdinateurService {
         return listReparationOrdinateur;
     }
 
-    public List<VReparationOrdinateur> getListReparationOrdinateurFiltreWithDateRetrait(String idComposant , String idTypeOrdinateur , String idTypeReparation) {
+    public List<VReparationOrdinateur> getListReparationOrdinateurFiltreWithDateRetrait(String idComposant , String idTypeOrdinateur , String idTypeReparation, String dateRetrait) {
         List<VReparationOrdinateur> listReparationOrdinateur = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            String query = this.sql(idComposant , idTypeOrdinateur , idTypeReparation) + " AND date_retrait is not NULL";
+            String query = this.sql1(idComposant , idTypeOrdinateur , idTypeReparation, dateRetrait) + " AND date_retrait is not NULL";
 
             System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -109,6 +130,10 @@ public class VReparationOrdinateurService {
             }
             if(!idTypeReparation.equals("")){
                 preparedStatement.setString(indexParameter, idTypeReparation);
+                indexParameter++;
+            }
+            if(!dateRetrait.equals("")){
+                preparedStatement.setDate(indexParameter, Date.valueOf(dateRetrait));
                 indexParameter++;
             }
             ResultSet resultSet = preparedStatement.executeQuery();

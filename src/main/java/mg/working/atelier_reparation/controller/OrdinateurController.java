@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -123,8 +124,8 @@ public class OrdinateurController {
     @GetMapping("/reparation/listTermine")
     public String goToListReparationTermine(HttpServletRequest request,@RequestParam(name = "id_composant" , defaultValue = "") String idComposant,
                                      @RequestParam(name = "id_type_ordinateur" , defaultValue = "") String idTypeOrdinateur,
-                                     @RequestParam(name = "id_type_reparation" , defaultValue = "") String idTypeReparation) {
-
+                                     @RequestParam(name = "id_type_reparation" , defaultValue = "") String idTypeReparation,
+                                           @RequestParam(name = "dateRetour" , defaultValue = "") String dateRetour) {
         List<Composant> composants = this.composantService.getComposants();
         request.setAttribute("composants", composants);
         List<TypeReparation> typeReparations = this.typeReparationService.getAllTypeReparation();
@@ -132,7 +133,7 @@ public class OrdinateurController {
         List<Type> typeOrdinateurs = this.typeService.getAllTypes();
         request.setAttribute("typeOrdinateurs", typeOrdinateurs);
         List<VReparationOrdinateur> vReparationOrdinateurs;
-        vReparationOrdinateurs = this.vReparationOrdinateurService.getListReparationOrdinateurFiltreWithDateRetrait(idComposant,idTypeOrdinateur,idTypeReparation);
+        vReparationOrdinateurs = this.vReparationOrdinateurService.getListReparationOrdinateurFiltreWithDateRetrait(idComposant,idTypeOrdinateur,idTypeReparation,dateRetour);
         request.setAttribute("vReparationOrdinateurs", vReparationOrdinateurs);
 
         return "/home/reparation/listReparationTermine";

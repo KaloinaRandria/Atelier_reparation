@@ -35,6 +35,7 @@ public class VReparationOrdinateur {
     String idTypeReparation;
     String typeReparation;
 
+
     public void setCoutReparation(String coutReparation) {
         this.coutReparation = Double.parseDouble(coutReparation);
     }
@@ -58,4 +59,5 @@ public class VReparationOrdinateur {
     public void setDateRetrait(Date dateRetrait) {
         this.dateRetrait = dateRetrait;
     }
+
 }

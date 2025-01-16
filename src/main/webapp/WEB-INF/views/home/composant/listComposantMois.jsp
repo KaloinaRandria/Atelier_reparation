@@ -29,6 +29,7 @@
                         <form method="get" action="/composantMois/list" class="row g-3">
                             <div class="col-sm-10 d-flex">
                                 <select name="mois" id="mois" class="form-select w-50 h-50 mt-3" >
+                                    <option value="">TOUS</option>
                                     <% int index = 1; for (String s : moisList) {%>
                                         <option <% if (request.getAttribute("mois") != null && ((String) request.getAttribute("mois")).compareTo(String.valueOf(index)) == 0) { %> selected <% }%> value="<%=index%>"><%=s%></option>
                                     <% index++; } %>
@@ -58,6 +59,7 @@
                             <tr>
                                 <th scope="col">Reference Composant</th>
                                 <th scope="col">nom Composant</th>
+                                <th>Date</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -65,6 +67,7 @@
                                     <tr>
                                         <td><%=composantMois1.getComposant().getId() %></td>
                                         <td><%=composantMois1.getComposant().getLibelle() %></td>
+                                        <td><%=composantMois1.getDate() %></td>
                                     </tr>
                                 <% }
 

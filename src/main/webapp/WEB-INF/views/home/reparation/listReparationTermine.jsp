@@ -57,6 +57,9 @@
                                     <% } %>
                                 </select>
                             </div>
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control mt-3 " name="dateRetour">
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">rechercher</button>
                             </div>
@@ -85,6 +88,7 @@
                                 <th scope="col">Cout (MDG)</th>
                                 <th scope="col">Type d'Ordinateur</th>
                                 <th scope="col">Type Reparation</th>
+                                <th>date retrait</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -99,6 +103,7 @@
                                 <td><%=vReparationOrdinateur.getCoutReparation()%></td>
                                 <td><%=vReparationOrdinateur.getTypeOrdinateur()%></td>
                                 <td><%=vReparationOrdinateur.getTypeReparation()%></td>
+                                <td><%=vReparationOrdinateur.getDateRetrait()%></td>
                             </tr>
                             <% } %>
                             </tbody>

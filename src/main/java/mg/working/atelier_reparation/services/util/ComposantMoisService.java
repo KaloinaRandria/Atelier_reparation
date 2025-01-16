@@ -21,6 +21,10 @@ public class ComposantMoisService {
         return this.composantMoisRepository.findListByMoisAnnee(mois,annee);
     }
 
+    public List<ComposantMois> getComposantAnnee(String annee) {
+        return this.composantMoisRepository.findComposantAnnee(annee);
+    }
+
     public List<String> getMonthLibelle() {
         List<String> monthLibelle = new ArrayList<String>();
         monthLibelle.add("January");
